@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para Xiomi ❤️</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      background: #fff0f3;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Paso 1 */
+    #step1 {
+      height: 100vh;
+      width: 100vw;
+      background: #fff0f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .heart-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: beat 1.2s infinite;
+      user-select: none;
+    }
+
+    .heart {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: #e60026;
+      transform: rotate(-45deg);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      top: 0;
+      left: 0;
+      border-radius: 0;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 200px;
+      height: 200px;
+      background-color: #e60026;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -100px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 100px;
+      top: 0;
+    }
+
+    .heart-text {
+      position: relative;
+      font-family: 'Pacifico', cursive;
+      font-size: 54px;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+      pointer-events: none;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+      top: -20px;
+      z-index: 1;
+      user-select: none;
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    /* Paso 2 */
+    #step2 {
+      display: none;
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background-color: #f4c2c2;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .background-container {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #f4c2c2;
+      z-index: 0;
+    }
+
+    .scrolling-text {
+      position: absolute;
+      display: grid;
+      grid-template-columns: repeat(70, auto);
+      grid-auto-rows: 1rem;
+      gap: 0.15rem 0.3rem;
+      width: max-content;
+      animation: scrollLeft 40s linear infinite;
+      color: #d46a6a;
+      font-weight: 600;
+      font-size: 0.55rem;
+      font-style: italic;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .scrolling-text span {
+      user-select: none;
+    }
+
+    @keyframes scrollLeft {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .pink-heart {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 350px;
+      height: 350px;
+      background-color: #f4c2c2;
+      border-radius: 0;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      box-shadow: 0 0 30px 8px rgba(180, 90, 90, 0.5);
+      animation: beatStep2 1.5s infinite;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .pink-heart::before,
+    .pink-heart::after {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background-color: #f4c2c2;
+      border-radius: 50%;
+      top: -175px;
+      left: 0;
+    }
+
+    .pink-heart::after {
+      left: 175px;
+      top: 0;
+    }
+
+    @keyframes beatStep2 {
+      0%, 100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+      50% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.05); }
+    }
+
+    .heart-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-family: 'Pacifico', cursive;
+      color: #6b0000;
+      text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.85);
+      user-select: none;
+      z-index: 2;
+      max-width: 320px;
+    }
+
+    .heart-message h1 {
+      font-size: 44px;
+      margin: 10px 0 6px;
+    }
+
+    .heart-message h4 {
+      font-size: 36px;
+      margin: 6px 0;
+    }
+
+    .heart-message p {
+      font-size: 28px;
+      margin: 6px 0;
+    }
+
+    .heart-message h6 {
+      font-size: 24px;
+      margin: 6px 0;
+    }
+
+    /* Paso Final */
+    #stepFinal {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      background: #fff0f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .letter {
+      position: relative;
+      background: #fff;
+      width: 90vw;
+      max-width: 500px;
+      padding: 50px 40px 60px 40px;
+      box-shadow:
+        0 4px 15px rgba(0,0,0,0.15),
+        inset 0 0 25px rgba(255, 182, 193, 0.3);
+      border-radius: 15px;
+      border: 2px solid #f8c5d1;
+      color: #6b0000;
+      text-align: center;
+      user-select: none;
+      font-size: 1.6rem;
+      line-height: 2.2rem;
+      animation: fadeInText 3s ease forwards;
+      outline: none;
+      font-style: italic;
+    }
+
+    .tulip {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+    }
+    .tulip.top-right {
+      top: 15px;
+      right: 15px;
+    }
+    .tulip.top-left {
+      top: 15px;
+      left: 15px;
+    }
+    .tulip.bottom-left {
+      bottom: 15px;
+      left: 15px;
+    }
+
+    .tulip .stem {
+      width: 6px;
+      height: 25px;
+      background: #9c2b2b;
+      margin: 0 auto;
+      border-radius: 3px;
+    }
+
+    .tulip .petals {
+      position: relative;
+      top: -15px;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .tulip .petal {
+      width: 14px;
+      height: 14px;
+      background-color: #d46a6a;
+      border-radius: 50% 50% 50% 50% / 100% 100% 0 0;
+      transform-origin: bottom center;
+    }
+
+    .tulip .petal.left {
+      transform: rotate(-20deg);
+    }
+
+    .tulip .petal.right {
+      transform: rotate(20deg);
+    }
+
+    @keyframes fadeInText {
+      from {opacity: 0; transform: translateY(15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Paso 1 -->
+  <div id="step1">
+    <div class="heart-container" role="button" tabindex="0">
+      <div class="heart"></div>
+      <div class="heart-text">Para Xio</div>
+    </div>
+  </div>
+
+  <!-- Paso 2 -->
+  <div id="step2">
+    <div class="background-container">
+      <div class="scrolling-text" id="scrolling-text"></div>
+    </div>
+    <div class="pink-heart"></div>
+    <div class="heart-message">
+      <h1>TE AMO XIOMARITA</h1>
+      <h4>EQYTQAT</h4>
+      <p></p>
+      <h6>De tu novio</h6>
+    </div>
+
+    <!-- 🎵 Música local -->
+    <audio id="music-player" src="FlowerInstrumental.mp3" autoplay loop hidden></audio>
+  </div>
+
+  <!-- Paso Final -->
+  <div id="stepFinal">
+    <div class="letter">
+      <div class="tulip top-right"><div class="petals"><div class="petal left"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip top-left"><div class="petals"><div class="petal left"></div><div class="petal right"></div></div><div class="stem"></div></div>
+      <div class="tulip bottom-left"><div class="petals"><div class="petal left"></div><div class="petal right"></div></div><div class="stem"></div></div>
+
+      <p>
+        Tenemos una cita pendiente...<br /><br />
+        Y no pienso perdérmela por nada del mundo 💖<br /><br />
+        Con amor, para ti..
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('scrolling-text');
+    const rows = 40;
+    const cols = 70;
+    for(let i=0; i < rows; i++) {
+      for(let j=0; j < cols; j++) {
+        const span = document.createElement('span');
+        span.textContent = "I LOVE";
+        container.appendChild(span);
+      }
+    }
+
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const stepFinal = document.getElementById('stepFinal');
+    const heartContainer = document.querySelector('.heart-container');
+    const pinkHeart = document.querySelector('.pink-heart');
+    const musicPlayer = document.getElementById('music-player');
+
+    function showStep2() {
+      step1.style.display = 'none';
+      step2.style.display = 'block';
+      stepFinal.style.display = 'none';
+      // Iniciar música
+      musicPlayer.play().catch(() => {
+        console.warn("Autoplay bloqueado, se iniciará al primer clic del usuario.");
+      });
+    }
+
+    function showStepFinal() {
+      step2.style.display = 'none';
+      stepFinal.style.display = 'flex';
+      // Detener música
+      musicPlayer.pause();
+      musicPlayer.currentTime = 0;
+    }
+
+    heartContainer.addEventListener('click', showStep2);
+    heartContainer.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showStep2();
+      }
+    });
+
+    pinkHeart.addEventListener('click', showStepFinal);
+  </script>
+</body>
+</html>
